@@ -32,9 +32,8 @@ def solve_part_2(data: list) -> int:
 
 def p1_find_matching(sack: str) -> str:
     half = int(len(sack) / 2)
-    for x in sack[:half]:
-        if x in sack[half:]:
-            return x
+    unique = list(set(sack[:half]) & set(sack[half:]))
+    return unique[0]
 
 
 def p2_get_groups(data: list) -> list[tuple]:
@@ -42,8 +41,7 @@ def p2_get_groups(data: list) -> list[tuple]:
 
 
 def p2_find_matching(group: tuple) -> str:
-    group_list = [list(iter(g)) for g in group]
-    unique = list(set(group_list[0]) & set(group_list[1]) & set(group_list[2]))
+    unique = list(set(group[0]) & set(group[1]) & set(group[2]))
     return unique[0]
 
 
