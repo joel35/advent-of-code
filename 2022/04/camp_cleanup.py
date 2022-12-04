@@ -18,7 +18,7 @@ def load_input():
 
 def solve_part_1(data):
     return len([
-        (a, b)
+        "fully_contained"
         for a, b
         in data
         if len(list(set(a) & set(b))) in (len(a), len(b))
@@ -27,7 +27,7 @@ def solve_part_1(data):
 
 def solve_part_2(data):
     return len([
-        (a, b)
+        "overlap"
         for a, b
         in data
         if len(list(set(a) & set(b)))
