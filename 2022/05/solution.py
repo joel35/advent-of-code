@@ -18,35 +18,40 @@ def load_input(file=FILE) -> list:
 
 
 def prepare_data(data) -> tuple:
-    split_index = data.index('\n')
+    split_index = data.index("\n")
 
     sorted_crates = []
 
-    for row in data[:split_index-1]:
+    for row in data[: split_index - 1]:
         row = row.replace("    ", " [.] ")
         columns = [c.strip() for c in row.split(" ") if not c in ("", "\n")]
         sorted_crates.append(columns)
-    
+
     sorted_instructions = []
 
-    for i in [i.strip() for i in data[split_index+1:]]:
-        sorted_instructions.append(tuple(int(x.strip()) for x in re.split(r'move|from|to', i) if x))
+    for i in [i.strip() for i in data[split_index + 1 :]]:
+        sorted_instructions.append(
+            tuple(int(x.strip()) for x in re.split(r"move|from|to", i) if x)
+        )
 
     return sorted_crates, sorted_instructions
 
 
 def solve_part_1(data: tuple[list]):
 
-    crates, instructions = data         
+    crates, instructions = data
 
-    pass
+    n_crates, from_i, to_i = instructions[0]
+
+    for i in range(n_crates):
+        print(crates[i][from_i - 1])
 
 
 def solve_part_2(data):
     pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
