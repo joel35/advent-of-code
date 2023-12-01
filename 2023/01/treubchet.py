@@ -22,8 +22,7 @@ def do_part_1(input):
 
 def do_part_2(input):
     number_key = get_number_key()
-    digits = (get_digits(line, number_key)
-        for line in input)
+    digits = (get_digits(line, number_key) for line in input)
 
     print(f"Part 2: {sum(digits)}")
 
@@ -31,7 +30,8 @@ def do_part_2(input):
 def get_digits(line, number_key):
     first = find_first_digit(line, number_key)
     last = find_last_digit(line, number_key)
-    return int(''.join((first, last)))
+    return int("".join((first, last)))
+
 
 def get_number_key():
     spelled = [
