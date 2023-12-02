@@ -3,6 +3,7 @@
 
 
 import re
+from pathlib import Path
 
 
 FILE = "input.txt"
@@ -15,7 +16,9 @@ def main():
 
 
 def load_input(file=FILE) -> list:
-    with open(file) as f:
+    path = Path(__file__).with_name(file)
+    print(f'{path=}')
+    with open(path) as f:
         return [line.strip() for line in f]
 
 
