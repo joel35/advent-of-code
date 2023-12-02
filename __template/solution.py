@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-#  https://adventofcode.com/2022/day/...
+# https://adventofcode.com/...
 
 
 FILE = "input.txt"
@@ -12,8 +12,9 @@ def main():
 
 
 def load_input(file=FILE) -> list:
-    with open(file, "r") as f:
-        return [line.strip() for line in f.readlines()]
+    path = Path(__file__).with_name(file)
+    with open(path, "r") as f:
+        return [line.strip() for line in f]
 
 
 def solve_part_1(data):
