@@ -20,11 +20,7 @@ def load_input(file=FILE) -> list:
 
 
 def solve_part_1(data):
-    maxes = {
-        'red': 12,
-        'green': 13,
-        'blue': 14
-    }
+    maxes = {"red": 12, "green": 13, "blue": 14}
     possible = []
 
     for line in data:
@@ -35,33 +31,31 @@ def solve_part_1(data):
             if n > maxes[colour]:
                 is_possible = False
                 break
-        
+
         if is_possible:
             possible.append(game)
 
     return sum(possible)
 
+
 def solve_part_2(data):
     powers = []
 
     for line in data:
-        maxes = {
-            'red': 0,
-            'green': 0,
-            'blue': 0
-        }
+        maxes = {"red": 0, "green": 0, "blue": 0}
         _, colours = prepare_line(line)
 
         for n, colour in colours:
             if n > maxes[colour]:
                 maxes[colour] = n
-        
+
         red, green, blue = maxes.values()
         powers.append(red * green * blue)
     return sum(powers)
 
+
 def prepare_line(line: list[str]) -> tuple[int, list]:
-    cleaned = re.split(f', |; |: ', line)
+    cleaned = re.split(f", |; |: ", line)
     game = int(cleaned[0].split()[-1])
     pairs = []
 
@@ -71,7 +65,8 @@ def prepare_line(line: list[str]) -> tuple[int, list]:
 
     return game, pairs
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
