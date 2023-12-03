@@ -57,7 +57,7 @@ def solve_part_2(data):
     return sum(powers)
 
 
-def prepare_line(line: list[str]) -> tuple[int, list]:
+def prepare_line(line: str) -> tuple[int, list]:
     cleaned = re.split(f", |; |: ", line)
     game = int(cleaned[0].split()[-1])
     pairs = []
