@@ -23,7 +23,6 @@ def solve_part_1(arr):
     all_nums = []
     good_nums = []
     bad_nums = []
-    # arr = arr[18:21]
     for i, row in enumerate(arr):
         n_buffer = []
         j_buffer = []
@@ -90,11 +89,6 @@ def solve_part_2(arr):
         ratios.append(nums[0] * nums[1])
 
     return sum(ratios)
-
-
-def parse_data(data: list[str]) -> list[list[str]]:
-    return [list(d) for d in data]
-
 
 def check_for_symbol(row: int, columns: tuple, arr: list, part_2=False):
     rows_to_check = [row]
