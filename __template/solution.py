@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # https://adventofcode.com/...
 
+from pathlib import Path
 
 FILE = "input.txt"
 
