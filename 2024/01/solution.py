@@ -2,6 +2,7 @@
 # https://adventofcode.com/2024/day/1
 
 from pathlib import Path
+from re import split
 
 FILE = "input.txt"
 # FILE = "sample.txt"
@@ -19,42 +20,32 @@ def load_input(file: str = FILE) -> list:
         return [line.strip() for line in f]
 
 
-def solve_part_1(data: list) -> int:
+def split_lines(lines: list) -> tuple[list]:
     lefts, rights = [], []
-    for line in data:
 
-        left, right = line.split(' ', 1)
-        lefts.append(int(left.strip()))
-        rights.append(int(right.strip()))
+    for line in lines:
+        left, right = line.split()
+        lefts.append(int(left))
+        rights.append(int(right))
     
-    pairs = [
-        (left, right)
-        for left, right
-        in zip(sorted(lefts), sorted(rights))
-    ]
+    return sorted(lefts), sorted(rights)
 
-    diffs = []
+def solve_part_1(data: list) -> int:
+    total = 0
 
-    for a, b in pairs:
-        diff = a - b
-        diffs.append(abs(diff))
+    for a, b in zip(*split_lines(data)):
+        total += abs(a - b)
 
-    return sum(diffs)
+    return total
 
 
 def solve_part_2(data: list) -> int:
-    lefts, rights = [], []
-    for line in data:
-        left, right = line.split(' ', 1)
-        lefts.append(int(left.strip()))
-        rights.append(int(right.strip()))
-
+    lefts, rights = split_lines(data)
     score = 0
-
-    for left in lefts:
-        for right in rights:
-            if left == right:
-                score += left
+    for a in lefts:
+        for b in rights:
+            if a == b:
+                score += a
     
     return score
 
