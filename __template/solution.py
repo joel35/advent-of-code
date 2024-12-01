@@ -12,17 +12,17 @@ def main():
     print(f"PART 2: {solve_part_2(data)}")
 
 
-def load_input(file=FILE) -> list:
+def load_input(file: str = FILE) -> list:
     path = Path(__file__).with_name(file)
     with open(path, "r") as f:
         return [line.strip() for line in f]
 
 
-def solve_part_1(data):
+def solve_part_1(data: list) -> int:
     pass
 
 
-def solve_part_2(data):
+def solve_part_2(data: list) -> int:
     pass
 
 
