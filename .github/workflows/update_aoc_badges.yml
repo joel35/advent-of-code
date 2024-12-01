@@ -8,15 +8,29 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
-          
-      - uses: joblo2213/aoc-badges-action@v3
+
+      - uses: J0B10/aoc-badges-action@v3.0.0
+        with:
+          userid: 1717876
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2024
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2022%20⭐-)[0-9]+(?=-yellow)'      
+
+      - uses: J0B10/aoc-badges-action@v3.0.0
+        with:
+          userid: 1717876
+          session: ${{ secrets.AOC_SESSION }}
+          year: 2023
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2022%20⭐-)[0-9]+(?=-yellow)'
+
+      - uses: J0B10/aoc-badges-action@v3.0.0
         with:
           userid: 1717876
           session: ${{ secrets.AOC_SESSION }}
           year: 2022
           starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2022%20⭐-)[0-9]+(?=-yellow)'
 
-      - uses: joblo2213/aoc-badges-action@v3
+      - uses: J0B10/aoc-badges-action@v3.0.0
         with:
           userid: 1717876
           session: ${{ secrets.AOC_SESSION }}
