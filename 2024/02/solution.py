@@ -21,32 +21,35 @@ def load_input(file: str = FILE) -> list:
 
 def solve_part_1(data: list) -> int:
     data = [[int(level) for level in report.split()] for report in data]
-    count = 0
-
-    for line in data:
-        no_dupes = list(set(line))
-        asc = sorted(no_dupes) == line
-        desc = sorted(no_dupes, reverse=True) == line
-
-        if not any((asc, desc)):
-            continue
-        
-        safe = (
-            1 <= abs(line[i+1] - line[i]) <= 3
-            for i
-            in range(len(line)-1)
-        )
-
-        if not all(safe):
-            continue
-
-        count += 1
-    
-    return count
+    return [is_safe(line) for line in data].count(True)
 
 
 def solve_part_2(data: list) -> int:
-    pass
+    data = [[int(level) for level in report.split()] for report in data]
+    safe_list = []
+    for line in data:
+        if is_safe(line):
+            safe_list.append(line)
+            continue
+        
+        for i in range(len(line)):
+            if is_safe(line[:i] + line[i+1:]):
+                safe_list.append(line)
+                break
+    
+    return len(safe_list)
+
+def is_safe(line: list) -> bool:
+    asc = []
+    desc = []
+    diff = []
+    
+    for i in range(len(line) - 1):
+        asc.append(line[i] < line[i+1])
+        desc.append(line[i] > line[i+1])
+        diff.append(1 <= abs(line[i] - line[i+1]) <= 3)
+    
+    return (all(asc) or all(desc)) and all(diff)
 
 
 if __name__ == "__main__":
