@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # https://adventofcode.com/2023/day/6
 
-import dis
 from pathlib import Path
 
 FILE = "input.txt"
@@ -42,6 +41,7 @@ def count_wins(time: int, distance: int) -> int:
     for i in range(time):
         if i * (time - i) > distance :
             count += 1
+    
     return count
 
 
