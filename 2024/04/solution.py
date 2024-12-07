@@ -4,7 +4,7 @@
 from pathlib import Path
 
 FILE = "input.txt"
-# FILE = "sample.txt"
+FILE = "sample.txt"
 
 
 def main():
