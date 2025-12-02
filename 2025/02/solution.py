@@ -2,6 +2,7 @@
 # https://adventofcode.com/2025/day/2
 
 from pathlib import Path
+from itertools import batched
 
 FILE = "input.txt"
 # FILE = "sample.txt"
@@ -39,8 +40,21 @@ def solve_part_1(data: list) -> int:
 
 
 def solve_part_2(data: list) -> int:
-    pass
+    line = data[0]
+    ids = [x for x in line.split(",")]
+    ids = [x.split("-") for x in ids]
 
+    bad = []
+
+    for start, stop in ids:
+        for i in range(int(start), int(stop) + 1):
+            id = str(i)
+            len_id = len(id)
+            for j in range(1, len_id):
+                if len(set(batched(id, j))) == 1:
+                    bad.append(i)
+                    break
+    return sum(bad)
 
 if __name__ == '__main__':
     try:
