@@ -15,8 +15,7 @@ def main():
 
 def load_input(file: str = FILE) -> list:
     path = Path(__file__).with_name(file)
-    with open(path, "r") as f:
-        return [line.strip() for line in f]
+    return path.read_text().splitlines()
 
 
 def solve_part_1(data: list) -> int:
